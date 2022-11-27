@@ -1,9 +1,6 @@
-import requests
-import json
-import pandas as pd
 import sqlite3
 
-conn = sqlite3.connect('DSCI551_Project.sqlite')
+conn = sqlite3.connect('../DSCI551_Project.sqlite')
 cur = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS metadata' )
 cur.execute('''
@@ -13,8 +10,8 @@ CREATE TABLE metadata (
 );
 ''')
 
-cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('root','2022-09-10') )
-cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('user','2022-09-10') )
+cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('root','2022-9-10') )
+cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('user','2022-9-10') )
 cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('jack','2022-11-10') )
 cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('work','2022-11-10') )
 cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',('OrderDetails','2022-11-10') )
