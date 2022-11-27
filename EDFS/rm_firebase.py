@@ -1,6 +1,6 @@
 import json
 import requests
-url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/root"
+url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/"
 
 inp = input('Enter command: ')
 a = inp.split()
