@@ -10,7 +10,7 @@ dir = a[1].split('/')[1:-1]
 root_dir = 'root'
 
 # Establishing the metadata directory and getting the current time
-metadata = '/metadata'
+metadata = 'metadata'
 time = datetime.now().strftime('%m/%d/%Y')
 
 if len(dir) != 0:
@@ -22,4 +22,4 @@ if requests.get(url + root_dir + '/.json').status_code != 200 :
     exit()
 
 resp = requests.patch(url + root_dir + '/.json', json = {new:''})
-metadata_resp = requests.patch(url + metadata + '/.json', json = time)
+metadata_resp = requests.patch(url + metadata + '/.json', json = {new:time})
