@@ -4,7 +4,7 @@ import pandas as pd
 import sqlite3
 
 
-data=pd.read_csv('Data/List of Orders.csv')
+data=pd.read_csv('../Data/List of Orders.csv')
 data.set_index('Order ID', inplace=True)
 data=data.to_dict('index')
 
@@ -13,7 +13,7 @@ resp = requests.put(url, json.dumps(data))
 print(resp)
 
 
-data1=pd.read_csv('Data/Sales target.csv')
+data1=pd.read_csv('../Data/Sales target.csv')
 data1=data1.to_dict('index')
 
 url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/Sales_Target.json"
@@ -35,7 +35,7 @@ CREATE TABLE OrderDetails (
 );
 ''')
 
-data2=pd.read_csv('Data/Order Details.csv')
+data2=pd.read_csv('../Data/Order Details.csv')
 for row in data2.itertuples(index=False):
     cur.execute('''INSERT INTO OrderDetails VALUES ( ?, ?, ?, ?, ?, ? )''',
             (row[0],row[1],row[2],row[3],row[4],row[5]) )
