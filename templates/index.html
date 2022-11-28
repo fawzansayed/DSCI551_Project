@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/styles.css" />
+
+  <!-- CDN's for Importing Firebase realtime database -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-database.js"></script>
+
+  <title>HDFS Emulation</title>
+</head>
+
+<body>
+
+  <!-- The header portion of the web application -->
+  <div id="header">
+    <div id="table">
+      <div id="centeralign">
+        <h1>HDFS Emulation</h1>
+        <p id="subtitle">See where data is partitioned and stored</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- The command line portion of the web application -->
+  <div id="command-line">
+    <section id="home">
+      <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span>
+      </p>
+    </section>
+
+    <section id="mkdir">
+      <h2><span>&raquo;mkdir</span></h2>
+      <p>
+        {{ Path }}
+      </p>
+    </section>
+    <section id="ls">
+      <h2><span>&raquo;ls</span></h2>
+      <p>
+        Output ls here
+      </p>
+    </section>
+    <section id="cat">
+      <h2><span>&raquo;cat</span></h2>
+      <p>
+        Output cat here
+      </p>
+    </section>
+    <section id="put">
+      <h2><span>&raquo;put</span></h2>
+      <p>
+        Output put here
+      </p>
+    </section>
+    <section id="rm">
+      <h2><span>&raquo;rm</span></h2>
+      <p>
+        Output rm here
+      </p>
+    </section>
+
+    <section id="error">
+      <p>Command not found!</p>
+      <p></p>
+      <p>
+        <span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span>
+      </p>
+    </section>
+
+    <section id="help">
+      <h2><span>&raquo;Help</span></h2>
+      <p>
+        <span>Type help + <kbd>Enter</kbd></span>
+      </p>
+      <ul>
+        <li>'home' -- To return to the homescreen</li>
+        <li>'help' -- Displays this list</li>
+        <li>'mkdir' -- Creating a file in the database</li>
+        <li>'ls' -- Listing contents of a directory</li>
+        <li>'cat' -- displays this contents of a file</li>
+        <li>'put' -- Inserts a new file in the database</li>
+        <li>'rm' -- Deletes a new file in the database</li>
+      </ul>
+    </section>
+    <span class="command">HDFS-user:/$<input name="command" type="text" /></span>
+  </div>
+
+  <script src="../static/script.js"></script>
+</body>
+
+</html>
