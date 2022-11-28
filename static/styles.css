@@ -6,9 +6,9 @@ html {
 }
 
 body {
-    font: 16pt "Inconsolata", monospace;
-    color: black;
-    font-weight: 400;
+  font: 16pt "Inconsolata", monospace;
+  color: black;
+  font-weight: 400;
 }
 
 #navbar {
@@ -26,16 +26,17 @@ body {
   margin: auto;
   text-align: center;
   width: 70%;
-} @media(max-width: 768px) {
-    .nav-wrapper {
-      width: 90%;
-    }
-  } @media(max-width: 638px) {
-      .nav-wrapper {
-        width: 100%;
-      }
-    } 
-
+}
+@media (max-width: 768px) {
+  .nav-wrapper {
+    width: 90%;
+  }
+}
+@media (max-width: 638px) {
+  .nav-wrapper {
+    width: 100%;
+  }
+}
 
 .logo {
   float: left;
@@ -44,11 +45,12 @@ body {
   height: 60px;
   letter-spacing: 1px;
   text-transform: uppercase;
-} @media(max-width: 768px) {
-    .logo {
-/*       margin-left: 5px; */
-    }
+}
+@media (max-width: 768px) {
+  .logo {
+    /*       margin-left: 5px; */
   }
+}
 
 #navbar ul {
   display: inline-block;
@@ -59,15 +61,17 @@ body {
   text-align: right;
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
-} @media(max-width: 640px) {
-    #navbar ul {
-      display: none;
-    }
-  } @media(orientation: landscape) {
-      #navbar ul {
-        display: inline-block;
-      }
-    }
+}
+@media (max-width: 640px) {
+  #navbar ul {
+    display: none;
+  }
+}
+@media (orientation: landscape) {
+  #navbar ul {
+    display: inline-block;
+  }
+}
 
 #navbar li {
   display: inline-block;
@@ -96,40 +100,40 @@ body {
 }
 
 #header {
-    height: 100%;
-    margin: 0;
-    padding-top: 10%;
-    text-align: center;
-    font-family: "Inconsolata", monospace;
-  }
-  
-  h1 {
-    text-transform: uppercase;
-    letter-spacing: 1pt;
-    font-size: 30pt;
-    margin-bottom: 15px;
-  }
-  
-  #subtitle {
-    text-align: center;
-    margin: 0;
-    font-size: 14pt;
-    font-weight: 900;
-    width: 50%;
-    display: none;
-  }
-  
-  #table {
-    display: table;
-    width: 100%;
-    height: 100%;
-    /* background-color: #e5e5e5; */
-  }
-  
-  #centeralign {
-    display: table-cell;
-    vertical-align: middle;
-  }
+  height: 100%;
+  margin: 0;
+  padding-top: 10%;
+  text-align: center;
+  font-family: "Inconsolata", monospace;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 1pt;
+  font-size: 30pt;
+  margin-bottom: 15px;
+}
+
+#subtitle {
+  text-align: center;
+  margin: 0;
+  font-size: 14pt;
+  font-weight: 900;
+  width: 50%;
+  display: none;
+}
+
+#table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  /* background-color: #e5e5e5; */
+}
+
+#centeralign {
+  display: table-cell;
+  vertical-align: middle;
+}
 
 #command-line {
   max-width: 28em;
