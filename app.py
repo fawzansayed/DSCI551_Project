@@ -4,6 +4,11 @@ import requests
 import datetime
 from EDFS.mkdir_firebase import *
 from EDFS.ls_firebase import *
+from EDFS.cat_firebase import *
+from EDFS.put_firebase import *
+from EDFS.rm_firebase import *
+import pandas as pd
+from pandas import DataFrame, read_csv
 from flask import Flask, Response, request, make_response, jsonify, render_template
 # from EDFS.firebase import *
 # from EDFS.sqlite import *
@@ -16,7 +21,15 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title="Home")
+
+@app.route("/search")
+def search():
+    return render_template("search.html", title="Search")
+
+@app.route("/explore")
+def explore():
+    return render_template("explore.html", title="Explore")
 
 
 @app.route('/mkdir', methods=['GET'])
@@ -26,12 +39,14 @@ def mkdir_firebase():
         path = mkdir(inp)
         return path
 
+
 @app.route('/ls', methods=['GET'])
 def ls_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = ls(inp)
         return path
+
 
 @app.route('/cat', methods=['GET'])
 def cat_firebase():
@@ -40,12 +55,30 @@ def cat_firebase():
         path = cat(inp)
         return path
 
+
 @app.route('/put', methods=['GET'])
 def put_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = put(inp)
         return path
+
+
+@app.route('/rm', methods=['GET'])
+def rm_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = rm(inp)
+        return path
+
+# @app.route('/display_table', methods=['GET'])
+# def html_table():
+#     return render_template('index.html',
+
+
+# file = 'Data/List of Orders.csv'
+# df = pd.read_csv(file)
+# df.to_html(header="true", table_id="main_table")
 
 # @app.route('/sqlite', methods=[GET])
 # def sql():
@@ -73,5 +106,6 @@ def put_firebase():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug = True, port = 5002)
+    
     cursor.close()

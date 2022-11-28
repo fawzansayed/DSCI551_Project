@@ -11,10 +11,94 @@ body {
     font-weight: 400;
 }
 
+#navbar {
+  background: white;
+  color: rgb(13, 26, 38);
+  position: fixed;
+  top: 0;
+  height: 60px;
+  line-height: 60px;
+  width: 100vw;
+  z-index: 10;
+}
+
+.nav-wrapper {
+  margin: auto;
+  text-align: center;
+  width: 70%;
+} @media(max-width: 768px) {
+    .nav-wrapper {
+      width: 90%;
+    }
+  } @media(max-width: 638px) {
+      .nav-wrapper {
+        width: 100%;
+      }
+    } 
+
+
+.logo {
+  float: left;
+  margin-left: 28px;
+  font-size: 1.5em;
+  height: 60px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+} @media(max-width: 768px) {
+    .logo {
+/*       margin-left: 5px; */
+    }
+  }
+
+#navbar ul {
+  display: inline-block;
+  float: right;
+  list-style: none;
+  /* margin-right: 14px; */
+  margin-top: -2px;
+  text-align: right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
+} @media(max-width: 640px) {
+    #navbar ul {
+      display: none;
+    }
+  } @media(orientation: landscape) {
+      #navbar ul {
+        display: inline-block;
+      }
+    }
+
+#navbar li {
+  display: inline-block;
+}
+
+#navbar li a {
+  color: rgb(13, 26, 38);
+  display: block;
+  font-size: 0.7em;
+  height: 50px;
+  letter-spacing: 1px;
+  margin: 0 20px;
+  padding: 0 4px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+#navbar li a:hover {
+  /* border-bottom: 1px solid rgb(28, 121, 184); */
+  color: rgb(28, 121, 184);
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
 #header {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding-top: 10%;
     text-align: center;
     font-family: "Inconsolata", monospace;
   }
@@ -89,6 +173,7 @@ kbd {
   padding: 0 0.2em;
 }
 input[type="text"] {
+  font: 16pt "Inconsolata", monospace;
   max-width: 10em;
   border: none;
   font-family: inherit;
@@ -96,6 +181,7 @@ input[type="text"] {
   padding: 0 0.5em;
 }
 input[type="text"]:focus {
+  font: 16pt "Inconsolata", monospace;
   background: #fff;
   color: #000;
   outline: none;
