@@ -204,3 +204,10 @@ section {
 .open {
   display: block;
 }
+
+#analysis {
+  font: 12pt "Inconsolata", monospace;
+  padding: 10%;
+  text-align: center;
+  width: 80%;
+}
