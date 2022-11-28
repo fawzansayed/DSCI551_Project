@@ -33,7 +33,7 @@ setTimeout(function () {
  * Simulating a command line interface with vanilla JS
  *
  * @version : 1.2.0
- * @author : Paulo Nunes (http://syndicatefx.com)
+ * @author : Paulo Nunes (request://syndicatefx.com)
  * @demo : https://codepen.io/syndicatefx/pen/jPxXpz
  * @license: MIT
  */
@@ -45,6 +45,7 @@ https://github.com/ckm100/typeWriter.js
 document.addEventListener("DOMContentLoad", typeWriter, false);
 
 var typeWriter = function (selector, type, interval) {
+
   var el = document.querySelectorAll(selector), // Getting elements in the DOM
     i = 0,
     len = el.length, // Length of element on the page
@@ -125,9 +126,10 @@ window.onload = function () {
   input.addEventListener("keyup", function (e) {
     if ((e.keyCode || e.which) == 13) {
       // ENTER key pressed
-      var targetValue = input.value;
+      var targetValue = input.value.split(' ')[0];
       var destination = "#" + targetValue;
       typeWriter(destination, "true", 10);
+      sendCommand();
       input.value = "";
 
       if (sectionArray.includes(targetValue) == false) {
@@ -140,11 +142,15 @@ window.onload = function () {
 // For Taking the input of the command and putting it in Flask
 
 function sendCommand() {
-  let command = Document.getElementsByTagName('Input').value
-  console.log(command)
-  const request = new XMLHttpRequest()
-  request.open('POST', '')
-  request.send()
-
+  let command = document.getElementById("command").value;
+  console.log(document.getElementById("command"));
+  const request = new XMLHttpRequest();
+  request.onreadystatechange = function () {
+    if (request.readyState == 4 && request.status == 200) {
+      document.getElementById('res_' + command.split(' ')[0]).innerHTML = request.responseText;
+    }
+  };
+  
+  path = request.open("GET", "/" + command.split(' ')[0] + "?command=" + command);
+  request.send();
 }
-
