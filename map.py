@@ -1,7 +1,6 @@
 import sqlite3
 import pandas as pd
 import requests
-import json
 
 inp1 = input('Enter File Location: ')
 inp2 = input('Enter Column: ')
