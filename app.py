@@ -2,18 +2,16 @@ import json
 import sqlite3
 import requests
 import datetime
+import pandas as pd
 from EDFS.mkdir_firebase import *
 from EDFS.ls_firebase import *
 from EDFS.cat_firebase import *
 from EDFS.put_firebase import *
 from EDFS.rm_firebase import *
-import pandas as pd
 from pandas import DataFrame, read_csv
 from flask import Flask, Response, request, make_response, jsonify, render_template
-# from EDFS.firebase import *
-# from EDFS.sqlite import *
 
-sqliteConnection = sqlite3.connect('sql.db')
+sqliteConnection = sqlite3.connect('DSCI551_Project.sqlite')
 cursor = sqliteConnection.cursor()
 
 app = Flask(__name__, template_folder='templates')
