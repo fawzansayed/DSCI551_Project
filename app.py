@@ -3,6 +3,7 @@ import sqlite3
 import requests
 import datetime
 from EDFS.mkdir_firebase import *
+from EDFS.ls_firebase import *
 from flask import Flask, Response, request, make_response, jsonify, render_template
 # from EDFS.firebase import *
 # from EDFS.sqlite import *
@@ -18,17 +19,33 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/mkdir', methods=['GET', 'POST'])
+@app.route('/mkdir', methods=['GET'])
 def mkdir_firebase():
     if request.method == 'GET':
-        inp = request.form.get('command')
-        return (str(inp))
-        # path = mkdir()
-        # return render_template('index.html', path = path)
+        inp = request.args.get('command')
+        path = mkdir(inp)
+        return path
 
-# @app.route('/ls', methods=['POST'])
-# def ls_firebase():
+@app.route('/ls', methods=['GET'])
+def ls_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = ls(inp)
+        return path
 
+@app.route('/cat', methods=['GET'])
+def cat_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = cat(inp)
+        return path
+
+@app.route('/put', methods=['GET'])
+def put_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = put(inp)
+        return path
 
 # @app.route('/sqlite', methods=[GET])
 # def sql():
