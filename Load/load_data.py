@@ -21,7 +21,7 @@ resp1 = requests.put(url, json.dumps(data1))
 print(resp1)
 
 
-conn = sqlite3.connect('DSCI551_Project.sqlite')
+conn = sqlite3.connect('../DSCI551_Project.sqlite')
 cur = conn.cursor()
 cur.execute('DROP TABLE IF EXISTS OrderDetails' )
 cur.executescript('''
