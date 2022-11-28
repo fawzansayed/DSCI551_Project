@@ -143,11 +143,12 @@ window.onload = function () {
 
 function sendCommand() {
   let command = document.getElementById("command").value;
-  console.log(document.getElementById("command"));
   const request = new XMLHttpRequest();
+
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
       document.getElementById('res_' + command.split(' ')[0]).innerHTML = request.responseText;
+      print(request.responseText)
     }
   };
   
