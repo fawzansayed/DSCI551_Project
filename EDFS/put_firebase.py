@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 from datetime import datetime
 
-inp = input('Enter command: ')
 def put(inp):
     a = inp.split()
     data=pd.read_csv('../Data/'+a[1])
