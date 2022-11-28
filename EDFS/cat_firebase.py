@@ -6,9 +6,7 @@ url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/root"
 
 inp = input('Enter command: ')
 a = inp.split()
-
 resp = requests.get(url + a[1] + '.json').json()
-
 first=0
 for key, value in resp.items():
     endpoint = value
