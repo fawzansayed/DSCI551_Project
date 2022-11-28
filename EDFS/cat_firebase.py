@@ -19,7 +19,7 @@ def cat(inp):
             df=df.append(pd.DataFrame(_file), ignore_index=True)
         first=1
     with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-        print(df)
+        return df.to_html(header="true", table_id="table")
 
 if __name__ == '__main__':
     cat()
