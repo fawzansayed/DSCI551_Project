@@ -11,3 +11,6 @@ i=1
 for r in rows :
     print('p%d: %s' % (i,r[0]))
     i+=1
+
+conn.commit()
+conn.close()
