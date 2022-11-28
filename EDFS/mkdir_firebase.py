@@ -4,7 +4,6 @@ from datetime import datetime
 url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/"
 
 def mkdir(inp):
-    # inp = input('Enter command: ')
     a = inp.split()
     new = a[1].split('/')[-1]
     _dir = a[1].split('/')[1:-1]
