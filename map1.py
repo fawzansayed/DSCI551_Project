@@ -55,5 +55,19 @@ elif inp3=='lessere' :
     out=df[df[inp2]<=inp4]
 
 print(out)
+
+def reduce(df,col,task) :
+    if task=='count' :
+        return df.shape[0]
+    elif task=='min' :
+        return df[col].min()
+    elif task=='max' :
+        return df[col].max()
+    elif task=='sum' :
+        return df[col].sum()
+    elif task=='avg' :
+        return df[col].avg()
+
+print(reduce(out,'Column1','sum'))
 conn.commit()
 conn.close()
