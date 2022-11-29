@@ -34,17 +34,29 @@
 
     <div id="analysis">
         <p>
-            The first plot shows how drastically there are dips and rises within the market monthly for all 
+            We have loaded the datasets using python scripts on Firebase and SQL. We have parallelly started working on
+            the entire dataset's search and analytics function. We plan to utilize these functions on the partitions;
+            further, we will create and combine the results of all partitions and combine before displaying them to the
+            user. We can further see in the figure above the Profit/Loss generated every month of 2018. So this gives us
+            an idea of which months proved more profitable and which ones incurred a loss. The figure shows that profit
+            is represented by green bars and loss is represented by red bars. We can also see that based on the chart,
+             there is more loss per month than there is profit which sas a lot about where the sales are directed.
         </p>
-        <img src="../static/assets/monthly_profit.jpeg">
+        <img src="../static/assets/monthly_profit.png">
         <p>
-            Looking at the segmentation of the customers is not enough, we must know the monthly profit of each...
+            Looking at the segmentation of the customers is not enough, we must know the monthly orders in addition to the profit to
+            see where things went wrong accounting for the losses between April all the way to september. What is strange is seeing how
+            the number of orders goes up relative to the profit going down in the pervious model.
         </p>
-        <img src="../static/assets/quantity_sold.jpeg">
+        <img src="../static/assets/quantity_sold.png">
         <p>
-            Here we show...
+            We performed a clustering algorithm to cluster different kinds of buyers. So here, segment 1 represents
+            Local Buyers. We can see that Local Buyers are represented by blue color. Local Buyers buy in small
+            quantities, so they buy in small amounts. Segment 2 represents Medium Buyers. They are represented by orange
+            color. They buy in large quantities. Segment 3 represents Occasional Buyers. They are represented by green
+            color. They occasionally buy in random quantities and in random amounts.
         </p>
-        <img src="../static/assets/customer_segmentation.jpeg">
+        <img src="../static/assets/customer_segmentation.png">
 
     </div>
 
