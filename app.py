@@ -32,13 +32,14 @@ def search():
 def explore():
     return render_template("explore.html", title="Explore")
 
-@app.route('/verify', methods = ['POST', 'GET'])
-def verify():
-    if request.method == 'POST':
-        return redirect(f"/user/{name}")
-
-@app.route('/table')
+@app.route('/table', methods=['GET'])
 def table():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        a = inp.split()
+        temp=a[1].split('/')
+
+
     conn = sqlite3.connect('DSCI551_Project.sqlite')
     conn.row_factory = sqlite3.Row
     print("Opened successfully in table route")
@@ -96,11 +97,11 @@ def gpl_firebase():
         path = gpl(inp)
         return render_template('gpl.html', path=path, inp=inp)
 
-@app.route('/partition', methods=['GET'])
+@app.route('/readPartition', methods=['GET'])
 def partition_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
-        path = rm(inp)
+        path = readPartition(inp)
         return render_template('partition.html', path=path, inp=inp)
 
 if __name__ == '__main__':
