@@ -14,11 +14,11 @@ from EDFS.readPartition_firebase import *
 
 from EDFS.mkdir_sql import *
 from EDFS.ls_sql import *
-# from EDFS.cat_sql import *
-# from EDFS.put_sql import *
-# from EDFS.rm_sql import *
-# from EDFS.GPL_sql import *
-# from EDFS.readPartition_sql import *
+from EDFS.cat_sql import *
+from EDFS.put_sql import *
+from EDFS.rm_sql import *
+from EDFS.GPL_sql import *
+from EDFS.readPartition_sql import *
 
 from pandas import DataFrame, read_csv
 from flask import Flask, Response, request, make_response, jsonify, render_template, redirect
@@ -50,17 +50,40 @@ def table():
     r = cur.fetchall() 
     return render_template('table.html', table=r)
 
+@app.route('/mkdir_sql', methods=['GET'])
+def _mkdir_sql():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = mkdir_sql(inp)
+        return render_template('ls_sql.html', path=path, inp=inp)
+
 @app.route('/ls_sql', methods=['GET'])
 def _ls_sql():
     if request.method == 'GET':
         inp = request.args.get('command')
-        conn = sqlite3.connect('DSCI551_Project.sqlite')
-        conn.row_factory = sqlite3.Row
-        cur = conn.cursor()
-        r = ls_sql(inp)
-        # r = cur.fetchall()
-        return render_template('table.html', table=r)
+        path = ls_sql(inp)
+        return render_template('ls_sql.html', path=path, inp=inp)
 
+@app.route('/cat_sql', methods=['GET'])
+def _cat_sql():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = cat_sql(inp)
+        return render_template('cat_sql.html', path=path, inp=inp)
+
+@app.route('/put_sql', methods=['GET'])
+def _put_sql():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = put_sql(inp)
+        return render_template('put_sql.html', path=path, inp=inp)
+
+@app.route('/rm_sql', methods=['GET'])
+def _rm_sql():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = rm_sql(inp)
+        return render_template('rm_sql.html', path=path, inp=inp)
 
 @app.route('/mkdir', methods=['GET'])
 def mkdir_firebase():
