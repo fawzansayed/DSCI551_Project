@@ -3,6 +3,7 @@ import sqlite3
 import requests
 import datetime
 import pandas as pd
+
 from EDFS.mkdir_firebase import *
 from EDFS.ls_firebase import *
 from EDFS.cat_firebase import *
@@ -10,6 +11,15 @@ from EDFS.put_firebase import *
 from EDFS.rm_firebase import *
 from EDFS.GPL_firebase import *
 from EDFS.readPartition_firebase import *
+
+from EDFS.mkdir_sql import *
+from EDFS.ls_sql import *
+# from EDFS.cat_sql import *
+# from EDFS.put_sql import *
+# from EDFS.rm_sql import *
+# from EDFS.GPL_sql import *
+# from EDFS.readPartition_sql import *
+
 from pandas import DataFrame, read_csv
 from flask import Flask, Response, request, make_response, jsonify, render_template, redirect
 
@@ -34,20 +44,22 @@ def explore():
 
 @app.route('/table', methods=['GET'])
 def table():
-    if request.method == 'GET':
-        inp = request.args.get('command')
-        a = inp.split()
-        temp=a[1].split('/')
-
-
     conn = sqlite3.connect('DSCI551_Project.sqlite')
     conn.row_factory = sqlite3.Row
-    print("Opened successfully in table route")
     cur = conn.cursor()
-
-    cur.execute('''SELECT * FROM OrderDetails ''')
-    r = cur.fetchall()
+    r = cur.fetchall() 
     return render_template('table.html', table=r)
+
+@app.route('/ls_sql', methods=['GET'])
+def _ls_sql():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        conn = sqlite3.connect('DSCI551_Project.sqlite')
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        r = ls_sql(inp)
+        # r = cur.fetchall()
+        return render_template('table.html', table=r)
 
 
 @app.route('/mkdir', methods=['GET'])
