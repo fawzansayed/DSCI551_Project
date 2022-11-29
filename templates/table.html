@@ -1,23 +1,29 @@
 {% extends 'explore.html' %}
 
 {% block mainContent %}
-<table>
-    <thead>Order_ID</thead>
-    <thead>Amount</thead>
-    <thead>Profit</thead>
-    <thead>Quantity</thead>
-    <thead>Category</thead>
-    <thead>Sub_Category</thead>
+<table class="table-fill">
+    <thead>
+        <tr>
+            <th class="text-left">Order_ID</th>
+            <th class="text-left">Amount</th>
+            <th class="text-left">Profit</th>
+            <th class="text-left">Quantity</th>
+            <th class="text-left">Category</th>
+            <th class="text-left">Sub_Category</th>
+        </tr>
 
     {% for row in table %}
-    <tr>
-        <td>{{row['Order_ID']}}</td>
-        <td>{{row['Amount']}}</td>
-        <td>{{row['Profit']}}</td>
-        <td>{{row['Quantity']}}</td>
-        <td>{{row['Category']}}</td>
-        <td>{{row['Sub_Category']}}</td>
-    </tr>
+    <tbody class="table-hover">
+        <tr>
+            <td>{{row['Order_ID']}}</td>
+            <td>{{row['Amount']}}</td>
+            <td>{{row['Profit']}}</td>
+            <td>{{row['Quantity']}}</td>
+            <td>{{row['Category']}}</td>
+            <td>{{row['Sub_Category']}}</td>
+        </tr>
+    </tbody>
+
     {% endfor %}
 </table>
 {% endblock %}
