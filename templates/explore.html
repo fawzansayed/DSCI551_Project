@@ -14,13 +14,13 @@
     <!-- Navbar portion of the web application -->
     <nav id="navbar" class="">
         <div class="nav-wrapper">
-            <ul id="menu">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('search') }}">Search</a></li>
-                <li><a href="{{ url_for('explore') }}">Explore</a></li>
-            </ul>
+          <ul id="menu">
+            <li><a href="{{ url_for('index') }}">Firebase</a></li>
+            <li><a href="{{ url_for('table') }}">SQL</a></li>
+            <li><a href="{{ url_for('search') }}">Analytics</a></li>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
     <!-- The header portion of the web application -->
     <div id="header">
@@ -31,6 +31,53 @@
             </div>
         </div>
     </div>
+
+      <!-- The command line portion of the web application -->
+  <div id="command-line">
+    <section id="home">
+      <p><span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span>
+      </p>
+    </section>
+
+    {% block mkdir %} {% endblock %}
+
+    {% block ls %} {% endblock %}
+
+    {% block cat %} {% endblock %}
+    
+    {% block put %} {% endblock %}
+
+    {% block rm %} {% endblock %}
+
+    {% block gpl %} {% endblock %}
+
+    {% block partition %} {% endblock %}
+
+    <section id="error">
+      <p>Command not found!</p>
+      <p></p>
+      <p>
+        <span>Type 'help' + <kbd>Enter</kbd> -- for available commands.</span>
+      </p>
+    </section>
+
+    <section id="help">
+      <h2><span>&raquo;Help</span></h2>
+      <p>
+        <span>Type help + <kbd>Enter</kbd></span>
+      </p>
+      <ul>
+        <li>'home' -- To return to the homescreen</li>
+        <li>'help' -- Displays this list</li>
+        <li>'mkdir' -- Creating a file in the database</li>
+        <li>'ls' -- Listing contents of a directory</li>
+        <li>'cat' -- displays this contents of a file</li>
+        <li>'put' -- Inserts a new file in the database</li>
+        <li>'rm' -- Deletes a new file in the database</li>
+      </ul>
+    </section>
+    <span class="command">HDFS-user:/$<input name="command" id="command" type="text" /></span>
+  </div>
 
     {% block mainContent %} {% endblock %}
 

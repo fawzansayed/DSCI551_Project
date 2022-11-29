@@ -14,13 +14,13 @@
     <!-- Navbar portion of the web application -->
     <nav id="navbar" class="">
         <div class="nav-wrapper">
-            <ul id="menu">
-                <li><a href="{{ url_for('index') }}">Home</a></li>
-                <li><a href="{{ url_for('search') }}">Search</a></li>
-                <li><a href="{{ url_for('explore') }}">Explore</a></li>
-            </ul>
+          <ul id="menu">
+            <li><a href="{{ url_for('index') }}">Firebase</a></li>
+            <li><a href="{{ url_for('table') }}">SQL</a></li>
+            <li><a href="{{ url_for('search') }}">Analytics</a></li>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
     <!-- The header portion of the web application -->
     <div id="header">
@@ -40,13 +40,21 @@
             user. We can further see in the figure above the Profit/Loss generated every month of 2018. So this gives us
             an idea of which months proved more profitable and which ones incurred a loss. The figure shows that profit
             is represented by green bars and loss is represented by red bars. We can also see that based on the chart,
-             there is more loss per month than there is profit which sas a lot about where the sales are directed.
+             there is more loss per month than there is profit which says a lot about where the sales are directed.
         </p>
         <img src="../static/assets/monthly_profit.png">
+	  <p>
+		We used search and analytics function on the partitions, we will create and combine the results of all partitions 
+		before displaying them to the user. We can further see in the figure above the Profit/Loss generated every month of 
+		2019. So this bar graph gives us an idea which month was more profitable. So that, we can analyze and compare month 
+		wise profits. The figure shows that the profit is represented by green bars. We can see that January had the most 
+		profits.
+	  </p>
+	  <img src="../static/assets/Monthly_profits_for_2019.png">
         <p>
             Looking at the segmentation of the customers is not enough, we must know the monthly orders in addition to the profit to
             see where things went wrong accounting for the losses between April all the way to september. What is strange is seeing how
-            the number of orders goes up relative to the profit going down in the pervious model.
+            the number of orders goes up relative to the profit going down in the previous model.
         </p>
         <img src="../static/assets/quantity_sold.png">
         <p>
@@ -57,6 +65,46 @@
             color. They occasionally buy in random quantities and in random amounts.
         </p>
         <img src="../static/assets/customer_segmentation.png">
+        <p>
+            We have further analyzed the data statewise. Here we have used States vs Profit plot. We can see that which state has 
+            incurred a loss while which state has gained maximum profits. The profits are denoted by green bars while the losses are 
+            denoted by red bars. We can see that the state "Tamil nadu" has incurred the maximum loss and the state "Maharashtra" has 
+            gained maximum profits.
+        </p>
+        <img src="../static/assets/State_wise_profit.png">
+        <p>
+            We are further analyzing number of orders by state. We have displayed a horizontal bar chart for the analytics part. We can see 
+            that statewise number of orders are displayed. We can see that the states "Madhya Pradesh" and "Maharashtra" are the two top most 
+            states having the maximum orders. The state "Tamil Nadu" have the minimum number of orders. Even though "Madhya Pradesh" has more 
+            number of orders than "Maharashtra", the profit of "Maharashtra" is more than "Madhya Pradesh" as shown above.
+        </p>
+        <img src="../static/assets/Statewise_total_orders.png">
+        <p>
+            We are further analyzing number of orders by city. We have displayed a horizontal bar chart for the analytics part. We can see 
+            that citywise number of orders are displayed. We can see that the cities "Indore" and "Mumbai" are the two top most 
+            states having the maximum orders. The city "Indore" has more orders than "Mumbai" as the state "Madhya Pradesh" has more orders
+            than "Maharashtra".
+        </p>
+        <img src="../static/assets/City_wise_total_orders.png">
+        <p>
+            For this part, we have used pie chart to analyze category wise total orders. So here we can see that the distribution of percentage
+            of orders per category is displayed. From the pie chart we can see that the number of orders for "Clothing" is more than the rest
+            two categories. This means that "Clothing" is in more demand than "Electronics" and "Furniture".
+        </p>
+        <img src="../static/assets/Category_wise_distribution.png">
+        <p>
+            This is a deeper analytics function than the one mentioned above. In this, we have used pie chart as well to analyze sub category
+            wise total orders. We can see that distribution of percentage of orders per sub category is visualized. From the pie chart, we can 
+            see that the sub category "Saree" which belongs to the category "Clothing" has the highest percentage of quantities sold. We can see 
+            that the sub category "Tables" which belong to the category "Furniture" has the lowest percentage of quantities sold.
+        </p>
+        <img src="../static/assets/Sub_category_wise_distribution.png">
+        <p>
+            For the last part we have used target data vs actual data to compare category wise whether we have accomplished our target or not.
+            From the figure, it is visible that all the categories failed to achieve their targets for the given year. The target bar is represented
+            by dark blue whereas the actual sales bar is represented by red.
+        </p>
+        <img src="../static/assets/Actual_vs_Target.png">
 
     </div>
 

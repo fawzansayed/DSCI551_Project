@@ -8,8 +8,10 @@ from EDFS.ls_firebase import *
 from EDFS.cat_firebase import *
 from EDFS.put_firebase import *
 from EDFS.rm_firebase import *
+from EDFS.GPL_firebase import *
+from EDFS.readPartition_firebase import *
 from pandas import DataFrame, read_csv
-from flask import Flask, Response, request, make_response, jsonify, render_template
+from flask import Flask, Response, request, make_response, jsonify, render_template, redirect
 
 conn = sqlite3.connect('DSCI551_Project.sqlite')
 conn.row_factory = sqlite3.Row
@@ -30,8 +32,14 @@ def search():
 def explore():
     return render_template("explore.html", title="Explore")
 
-@app.route('/explore/table')
+@app.route('/table', methods=['GET'])
 def table():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        a = inp.split()
+        temp=a[1].split('/')
+
+
     conn = sqlite3.connect('DSCI551_Project.sqlite')
     conn.row_factory = sqlite3.Row
     print("Opened successfully in table route")
@@ -39,7 +47,6 @@ def table():
 
     cur.execute('''SELECT * FROM OrderDetails ''')
     r = cur.fetchall()
-
     return render_template('table.html', table=r)
 
 
@@ -48,7 +55,12 @@ def mkdir_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = mkdir(inp)
-        return path
+        return render_template('mkdir.html', path=path, inp=inp)
+
+@app.route('/help', methods=['GET'])
+def help():
+    if request.method == 'GET':
+        return render_template('help.html')  
 
 
 @app.route('/ls', methods=['GET'])
@@ -56,7 +68,8 @@ def ls_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = ls(inp)
-        return path
+        print(path)
+        return render_template('ls.html', path=path, inp=inp)
 
 
 @app.route('/cat', methods=['GET'])
@@ -64,7 +77,7 @@ def cat_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = cat(inp)
-        return path
+        return render_template('cat.html', path=path, inp=inp)
 
 
 @app.route('/put', methods=['GET'])
@@ -72,7 +85,7 @@ def put_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = put(inp)
-        return path
+        return render_template('put.html', path=path, inp=inp)
 
 
 @app.route('/rm', methods=['GET'])
@@ -80,42 +93,21 @@ def rm_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = rm(inp)
-        return path
+        return render_template('rm.html', path=path, inp=inp) 
 
+@app.route('/gpl', methods=['GET'])
+def gpl_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = gpl(inp)
+        return render_template('gpl.html', path=path, inp=inp)
 
-# @app.route('/display_table', methods=['GET'])
-# def html_table():
-#     return render_template('index.html',
-
-
-# file = 'Data/List of Orders.csv'
-# df = pd.read_csv(file)
-# df.to_html(header="true", table_id="main_table")
-
-# @app.route('/sqlite', methods=[GET])
-# def sql():
-#     # The main query to show all of the data in one location
-#     table = request.args.get('table')
-#     initial_query = "SELECT COLUMN_NAME FROM WHERE table_name = '"+table+"' and table_schema = ''"
-
-#     # Finding specific values in the database from the keyword
-#     if request.args.get('keyword'):
-#         keycol = request.args.get('column')
-#         keyword = riquest.args.get('keyword')
-#         key_query = "SELECT * FROM project."+table+" WHERE " + keycol + " LIKE '%" + keyword + "%'"
-#     else:
-#         key_query = "SELECT * FROM project." + table
-
-#     # Ordering specific values in the database based on the options they choose
-#     if request.args.get('order'):
-#         order_query = key_query + " ORDER BY " + request.args.get("order")
-
-#     # Grouping specific values in the database based on the options they choose
-#     if request.args.get('group'):
-#         group_query = key_query + " GROUP BY " + request.args.get("group")
-
-#     return response
-
+@app.route('/readPartition', methods=['GET'])
+def partition_firebase():
+    if request.method == 'GET':
+        inp = request.args.get('command')
+        path = readPartition(inp)
+        return render_template('partition.html', path=path, inp=inp)
 
 if __name__ == '__main__':
     app.run(debug = True, port = 5002)

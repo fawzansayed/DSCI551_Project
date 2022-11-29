@@ -3,9 +3,12 @@ import json
 
 url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/root"
 
-inp = input('Enter command: ')
-a = inp.split()
-resp = requests.get(url + a[1] + '.json').json()
+def gpl(inp):
+    a = inp.split()
+    resp = requests.get(url + a[1] + '.json').json()
+    res = ''
 
-for k in resp.keys() :
-    print(k,': ',resp[k])
+    for k in resp.keys() :
+        res = res + (k +': ' +resp[k] + '\n')
+
+    return res
