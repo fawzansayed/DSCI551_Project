@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "database": "${workspaceFolder:DSCI551_Project}/DSCI551_Project.sqlite",
+            "name": "DSCI 551"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}
