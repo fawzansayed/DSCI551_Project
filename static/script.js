@@ -121,7 +121,6 @@ window.onload = function () {
   for (var i = 0; i < block.length; i++) {
     sectionArray.push(block[i].id);
   }
-  //console.log(sectionArray);
 
   input.addEventListener("keyup", function (e) {
     if ((e.keyCode || e.which) == 13) {
@@ -144,6 +143,9 @@ window.onload = function () {
 function sendCommand() {
   let command = document.getElementById("command").value;
   const request = new XMLHttpRequest();
+  
+  path = request.open("GET", "/" + command.split(' ')[0] + "?command=" + command);
+  request.send();
 
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
@@ -151,7 +153,4 @@ function sendCommand() {
       print(request.responseText)
     }
   };
-  
-  path = request.open("GET", "/" + command.split(' ')[0] + "?command=" + command);
-  request.send();
 }
