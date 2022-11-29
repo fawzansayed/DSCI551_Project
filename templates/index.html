@@ -61,7 +61,9 @@
       </p>
     </section>
 
-    <section id="help">
+    {% block help %} {% endblock %}
+    
+    <!-- <section id="help">
       <h2><span>&raquo;Help</span></h2>
       <p>
         <span>Type help + <kbd>Enter</kbd></span>
@@ -74,8 +76,10 @@
         <li>'cat' -- displays this contents of a file</li>
         <li>'put' -- Inserts a new file in the database</li>
         <li>'rm' -- Deletes a new file in the database</li>
+        <li>'gpl' -- Obtains the partition location</li>
+        <li>'readPartition' -- Reads the partition based on location</li>
       </ul>
-    </section>
+    </section> -->
     <span class="command">HDFS-user:/$<input name="command" id="command" type="text" /></span>
   </div>
 

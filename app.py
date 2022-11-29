@@ -55,7 +55,12 @@ def mkdir_firebase():
     if request.method == 'GET':
         inp = request.args.get('command')
         path = mkdir(inp)
-        return render_template('mkdir.html', path=path, inp=inp) 
+        return render_template('mkdir.html', path=path, inp=inp)
+
+@app.route('/help', methods=['GET'])
+def help():
+    if request.method == 'GET':
+        return render_template('help.html')  
 
 
 @app.route('/ls', methods=['GET'])
