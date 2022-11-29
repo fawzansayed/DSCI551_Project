@@ -15,9 +15,9 @@
   <nav id="navbar" class="">
     <div class="nav-wrapper">
       <ul id="menu">
-        <li><a href="{{ url_for('index') }}">Home</a></li>
-        <li><a href="{{ url_for('search') }}">Search</a></li>
-        <li><a href="{{ url_for('table') }}">Explore</a></li>
+        <li><a href="{{ url_for('index') }}">Firebase</a></li>
+        <li><a href="{{ url_for('table') }}">SQL</a></li>
+        <li><a href="{{ url_for('search') }}">Analytics</a></li>
       </ul>
     </div>
   </nav>
@@ -39,11 +39,6 @@
       </p>
     </section>
 
-    <section id="mkdir">
-      <h2><span>&raquo;mkdir</span></h2>
-      <p id="res_mkdir"></p>
-    </section>
-
     {% block mkdir %} {% endblock %}
 
     {% block ls %} {% endblock %}
@@ -57,21 +52,6 @@
     {% block gpl %} {% endblock %}
 
     {% block partition %} {% endblock %}
-
-    <!-- <section id="cat">
-      <h2><span>&raquo;{{inp}}</span></h2>
-      <p id="res_cat">
-        
-      </p>
-    </section> -->
-    <!-- <section id="put">
-      <h2><span>&raquo;put</span></h2>
-      <p id="res_put"></p>
-    </section>
-    <section id="rm">
-      <h2><span>&raquo;rm</span></h2>
-      <p id="res_rm"></p>
-    </section> -->
 
     <section id="error">
       <p>Command not found!</p>

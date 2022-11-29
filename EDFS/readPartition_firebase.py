@@ -4,11 +4,10 @@ import pandas as pd
 
 url = "https://dsci551project-1ff87-default-rtdb.firebaseio.com/"
 
-inp = input('Enter command: ')
-a = inp.split()
-resp = requests.get(url + 'root' + a[1] + '.json').json()
-loc=resp['p'+a[2]]
-out=requests.get(loc + '.json').json()
-df = pd.DataFrame(out)
-with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-    print(df)
+def readPartition(inp):
+    a = inp.split()
+    resp = requests.get(url + 'root' + a[1] + '.json').json()
+    loc=resp['p'+a[2]]
+    out=requests.get(loc + '.json').json()
+    df = pd.DataFrame(out)
+    return df

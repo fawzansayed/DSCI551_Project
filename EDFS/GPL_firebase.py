@@ -9,6 +9,6 @@ def gpl(inp):
     res = ''
 
     for k in resp.keys() :
-        res.append(k +': ' +resp[k] + '\n')
+        res = res + (k +': ' +resp[k] + '\n')
 
     return res
