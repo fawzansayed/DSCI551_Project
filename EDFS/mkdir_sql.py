@@ -11,7 +11,7 @@ def mkdir_sql(inp):
     time = datetime.now().strftime('%Y-%m-%d')
     cur.execute('''INSERT INTO metadata VALUES ( ?, ?)''',(temp[-1],time) )
     cur.execute('''INSERT INTO shape VALUES ( ?, ?)''',(temp[-2],temp[-1]) )
-    r = cur.fetchall()
-    return r
-# conn.commit()
-# conn.close()
+    res = 'Successfully created {} at {}'.format(temp[-1], time)
+    conn.commit()
+    conn.close()
+    return res

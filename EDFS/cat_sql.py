@@ -36,8 +36,6 @@ def cat_sql(inp):
             else :
                 df=df.append(pd.DataFrame(rows, columns=cols), ignore_index=True)
     with pd.option_context('display.max_rows', None, 'display.max_columns', None):
-        print(df)
-    r = cur.fetchall()
-    return r
+        return df
 # conn.commit()
 # conn.close()
