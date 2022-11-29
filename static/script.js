@@ -45,7 +45,6 @@ https://github.com/ckm100/typeWriter.js
 document.addEventListener("DOMContentLoad", typeWriter, false);
 
 var typeWriter = function (selector, type, interval) {
-
   var el = document.querySelectorAll(selector), // Getting elements in the DOM
     i = 0,
     len = el.length, // Length of element on the page
@@ -125,14 +124,23 @@ window.onload = function () {
   input.addEventListener("keyup", function (e) {
     if ((e.keyCode || e.which) == 13) {
       // ENTER key pressed
-      var targetValue = input.value.split(' ')[0];
+      var targetValue = input.value.split(" ")[0];
       var destination = "#" + targetValue;
       typeWriter(destination, "true", 10);
-      sendCommand();
-      input.value = "";
+      let command = document.getElementById("command").value;
+      console.log(targetValue);
+      if (targetValue == command.split(" ")[0]) {
+        window.location.replace(
+          "/" + command.split(" ")[0] + "?command=" + command
+        );
+      } else {
+        sendCommand();
 
-      if (sectionArray.includes(targetValue) == false) {
-        typeWriter("#error", "true", 10);
+        input.value = "";
+
+        if (sectionArray.includes(targetValue) == false) {
+          typeWriter("#error", "true", 10);
+        }
       }
     }
   });
@@ -143,14 +151,17 @@ window.onload = function () {
 function sendCommand() {
   let command = document.getElementById("command").value;
   const request = new XMLHttpRequest();
-  
-  path = request.open("GET", "/" + command.split(' ')[0] + "?command=" + command);
+
+  path = request.open(
+    "GET",
+    "/" + command.split(" ")[0] + "?command=" + command
+  );
   request.send();
 
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
-      document.getElementById('res_' + command.split(' ')[0]).innerHTML = request.responseText;
-      print(request.responseText)
+      document.getElementById("res_" + command.split(" ")[0]).innerHTML =
+        request.responseText;
     }
   };
 }

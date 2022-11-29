@@ -5,7 +5,7 @@ from datetime import datetime
 
 def put(inp):
     a = inp.split()
-    data=pd.read_csv('../Data/'+a[1])
+    data=pd.read_csv('Data/'+a[1])
     aaa=a[1].split('.')[0]
     data1=data.to_dict('index')
     
