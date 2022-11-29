@@ -11,8 +11,9 @@ from EDFS.rm_firebase import *
 from pandas import DataFrame, read_csv
 from flask import Flask, Response, request, make_response, jsonify, render_template
 
-sqliteConnection = sqlite3.connect('DSCI551_Project.sqlite')
-cursor = sqliteConnection.cursor()
+conn = sqlite3.connect('DSCI551_Project.sqlite')
+conn.row_factory = sqlite3.Row
+cur = conn.cursor()
 
 app = Flask(__name__, template_folder='templates')
 
@@ -28,6 +29,18 @@ def search():
 @app.route("/explore")
 def explore():
     return render_template("explore.html", title="Explore")
+
+@app.route('/explore/table')
+def table():
+    conn = sqlite3.connect('DSCI551_Project.sqlite')
+    conn.row_factory = sqlite3.Row
+    print("Opened successfully in table route")
+    cur = conn.cursor()
+
+    cur.execute('''SELECT * FROM OrderDetails ''')
+    r = cur.fetchall()
+
+    return render_template('table.html', table=r)
 
 
 @app.route('/mkdir', methods=['GET'])
@@ -68,6 +81,7 @@ def rm_firebase():
         inp = request.args.get('command')
         path = rm(inp)
         return path
+
 
 # @app.route('/display_table', methods=['GET'])
 # def html_table():

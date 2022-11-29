@@ -1,0 +1,23 @@
+{% extends 'explore.html' %}
+
+{% block mainContent %}
+<table>
+    <thead>Order_ID</thead>
+    <thead>Amount</thead>
+    <thead>Profit</thead>
+    <thead>Quantity</thead>
+    <thead>Category</thead>
+    <thead>Sub_Category</thead>
+
+    {% for row in table %}
+    <tr>
+        <td>{{row['Order_ID']}}</td>
+        <td>{{row['Amount']}}</td>
+        <td>{{row['Profit']}}</td>
+        <td>{{row['Quantity']}}</td>
+        <td>{{row['Category']}}</td>
+        <td>{{row['Sub_Category']}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

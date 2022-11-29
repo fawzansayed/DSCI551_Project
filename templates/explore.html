@@ -32,10 +32,7 @@
         </div>
     </div>
 
-    {% for table in tables %}
-    {{titles[loop.index]}}
-    {{ table|safe }}
-    {% endfor %}
+    {% block mainContent %} {% endblock %}
 
     <script src="../static/script.js"></script>
 </body>
